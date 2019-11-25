@@ -1,0 +1,30 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+if __name__ == '__main__':
+    jumps = [None for i in range(100000000)]
+    # inputFile = "./brianfry.in"
+    # f = open(inputFile, 'r')
+    # for line in f.readlines():
+    ij = input().rstrip().split()
+    while ij != "":
+        # ij= line.rstrip().split()
+        
+        i = int(ij[0])
+
+        j = int(ij[1])
+
+        for k in range(min([i,j]),max([i,j])+1):
+            fillPath(k,jumps,100000000)
+        
+        m = max(jumps[min([i,j]):max([i,j])+1])
+            
+        print(str(i) + " " + str(j) + " " + str(m))
+        ij = input().rstrip().split()
+    # f.close()
+

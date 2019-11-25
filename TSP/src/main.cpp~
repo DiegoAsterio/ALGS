@@ -1,0 +1,10 @@
+#include <list>
+#include "tsp.hpp"
+
+int main(){
+  std::vector<Point> l = {Point(-21,0), Point(-5,0), Point(-1,0), Point(0,0), Point(1,0), Point(3,0), Point(11,0)};
+
+  closestPair(l)
+  
+  return 0;
+}

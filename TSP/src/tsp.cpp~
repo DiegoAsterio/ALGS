@@ -1,0 +1,59 @@
+#include "tsp.hpp"
+
+std::list<std::list<Point> > getChains(std::vector<Point> v)
+{
+  std::list<std::list<Point> > ret = {};
+  for(auto& p : v)
+    {
+      ret.append({p});
+    }
+  return ret;
+};
+
+std::pair<float,pair<Point,Point> > closestPoints(std::vector<Point> ee1,std::vector<Point> ee2){
+  std::vector<pair<float,pair<Point,Point> > > aux = {};
+  for(const auto e1 : ee1)
+    {
+      for(const auto e2 : ee2)
+	{
+	  float d = e1.distance(e2);
+	  std::pair<Point,Point> p = {e1, e2};
+	  aux.append({d, p});
+	}
+    }
+  auto lessT = [](pair<float,pair<Point,Point> > x, pair<float,pair<Point,Point> > y){ return y.first < y.first; };
+  return std::min(aux, lessT);
+	  
+std::vector<Point> closestPair(std::vector<Point> v)
+{
+  const int N = v.size();
+  list<list<Point> > c = getChains(v)
+  for(int i = 1; i<N; ++i)
+    {
+     for(auto& l1 : c)
+       {
+	for(auto& l2 : c)
+	  {
+	   if (l1 != l2)
+	     {
+	      f1 = l1.front();
+	      b1 = l1.back();
+	      f2 = l2.front();
+	      b2 = l2.back();
+	      std::pair<Point,Point> ee1 = {f1, b1};
+	      std::pair<Point,Point> ee2 = {f2, b2};
+	      std::pair<float,pair<Point,Point> > close = closestPoints(ee1, ee2);
+	      std::pair<Orientation,Orientation> align = getOrientation(ee1, ee2, close.second);
+	      d = close.first;
+	      if (d < dist)
+		{
+		 dist = d;
+		 c1 = l1;
+		 c2 = l2;
+		 alignment = align;
+		}
+	     }
+	  }
+       }
+    }
+}
